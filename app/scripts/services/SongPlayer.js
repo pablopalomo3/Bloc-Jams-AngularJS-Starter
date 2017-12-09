@@ -25,7 +25,6 @@
                 currentBuzzObject.stop();
                 SongPlayer.currentSong.playing = null;
             }
-
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
@@ -81,6 +80,10 @@
          SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
+                setSong(song);
+                playSong(song);
+            } else if (song === null) {
+                song = currentAlbum.songs[0];
                 setSong(song);
                 playSong(song);
             } else if (SongPlayer.currentSong === song) {
