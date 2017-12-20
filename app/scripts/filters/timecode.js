@@ -1,3 +1,4 @@
+/*
 (function() {
     function timecode() {
         return function(seconds) {
@@ -20,6 +21,29 @@
             output += remainingSeconds;
 
             return output;
+        };
+    }
+
+    angular
+        .module('blocJams')
+        .filter('timecode', timecode);
+})();
+*/
+
+//buzz toTimer()
+
+(function() {
+    function timecode() {
+        return function(seconds) {
+            var seconds = Number.parseFloat(seconds);
+
+            if (Number.isNaN(seconds)) {
+                return '-:--';
+            }
+
+            var timer = buzz.toTimer(seconds);
+
+            return timer;
         };
     }
 
